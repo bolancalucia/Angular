@@ -10,6 +10,8 @@ import { ProductService } from './product.service';
 export class ProductDetailComponent implements OnInit {
   pageTitle: string = "Product Detail";
   errorMessage: string = '';
+  imageWidth: number = 250;
+  imageMargin: number = 5;
   product: IProduct | undefined;
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -18,8 +20,8 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit() {
     let id = +this.route.snapshot.paramMap.get('id');
     if(id) {
-      const idn = +id;
-      this.getProduct(idn);
+      const idAgain = +id;
+      this.getProduct(idAgain);
     }
   }
   getProduct(id: number) {

@@ -27,8 +27,8 @@
                             </button>
                         </th>
                         <th>Product</th>
+                        <th>Description</th>
                         <th>Code</th>
-                        <th>Available</th>
                         <th>Price</th>
                         <th>5 Star Rating</th>
                         <th>Favourite</th>
@@ -48,17 +48,17 @@
                                 {{product.productName}}
                             </a>
                         </td>
+                        <td>{{product.description}}</td>
                         <td>{{product.productCode | lowercase | convertToSpaces:'-'}}</td>
-                        <td>{{product.releaseDate}}</td>
                         <td>{{product.price | currency:'USD':'symbol':'1.2-2'}}</td>
                         <td>
                             <pm-star [rating]='product.starRating'
                             (ratingClicked)='onRatingClicked($event)'></pm-star>
                         </td>
                         <td>
-                            <button class='btn btn-primary' (click)='changeFavourite(productId)'>
-                                <span class='glyphicon glyphicon-heart'></span>{{product.favourite ? 'Remove From' : 'Add To'}} Favourites
-                            </button>
+                            <!-- <button class='btn btn-primary' (click)='changeFavourite(productId)'>
+                                {{product.favourite ? 'Remove From' : 'Add To'}} Favourites 
+                            </button> -->
                         </td>
                     </tr>
                 </tbody>
@@ -66,3 +66,4 @@
         </div>
     </div>
 </div>
+

@@ -9,8 +9,8 @@ import { ProductService } from "./product.service";
 
 export class ProductListComponent implements OnInit {
     pageTitle: string = 'Product List';
-    imageWidth: number = 50;
-    imageMargin: number = 2;
+    imageWidth: number = 80;
+    imageMargin: number = 5;
     showImage: boolean = false;
     errorMessage : string;
     _listFilter: string;
@@ -38,20 +38,21 @@ export class ProductListComponent implements OnInit {
     }
     performFilter(filterBy: string): IProduct[] {
         filterBy = filterBy.toLocaleLowerCase();
-        return this.products.filter((product: IProduct) => product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+        return this.products.filter((product: IProduct) => ((product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1 ) 
+                || (product.description.toLocaleLowerCase().indexOf(filterBy) !== -1 )));
     }
     onRatingClicked(message: string): void {
         this.pageTitle = 'Product List: ' + message;
     }
-    changeFavourite(id : number): void {
-        console.log(id);
-        this.products.forEach((product: IProduct) => {
-            if(product.productId === id) {
-                product.favourite = !product.favourite;
-            }      
-        }); 
-        // this.filteredProducts = this.products.filter((product: IProduct) => {
-        //     product.favourite === true;
-        // });
-    }
+    // changeFavourite(id : number): void {
+    //     console.log(id);
+    //     this.products.forEach((product: IProduct) => {
+    //         if(product.productId === id) {
+    //             product.favourite = !product.favourite;
+    //         }      
+    //     }); 
+    //     // this.filteredProducts = this.products.filter((product: IProduct) => {
+    //     //     product.favourite === true;
+    //     // });
+    // }
 }
