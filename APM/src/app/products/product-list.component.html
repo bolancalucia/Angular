@@ -1,23 +1,69 @@
 <div class='wholePage'>
-<div class='card'>
-    <div class='card-header'>
-        {{pageTitle}}
-    </div>
-    <div class='card-body'>
-        <div class='row'>
-            <div class='col-md-2'>Filter by:</div>
-            <div class='col-md-4'>
-                <input type='text'
-                       [(ngModel)]='listFilter' />
-            </div>
+    <div class='card'>
+        <div class='card-header'>
+            {{pageTitle}}
         </div>
-        <div class='row'>
-            <div class='col-md-6'>
-                <h4>Filtered by: {{listFilter}}</h4>
+        <div class='card-body'>
+            <div class='row'>
+                <div class='col-md-2'>Filter by:</div>
+                <div class='col-md-4'>
+                    <input type='text'
+                           [(ngModel)]='listFilter' />
+                </div>
             </div>
-        </div>
-        <div class='table-responsive'>
-            <table class='table'
+            <div class='row'>
+                <div class='col-md-6'>
+                    <h4>Filtered by: {{listFilter}}</h4>
+                </div>
+            </div>
+            <button class='btn btn-primary'
+                                    (click)='toggleImage()'
+                                    [style.margin-bottom.px]=10                     
+                                    [style.margin-top.px]=10>
+                                {{showImage? 'Hide': 'Show'}} Image
+            </button>
+            <div class='card-body'
+                 *ngFor='let product of filteredProducts' style="border:black solid 1px;margin:15px 0px">
+                 <div class='row'>
+                        <a class='col-md-8'
+                           [routerLink]="['/products', product.productId]">
+                            {{product.productName}}
+                        </a>
+                        <label class='col-md-6'>{{product.productRating}}</label>
+                    </div>
+                 <div class='row'>       
+                    <div class='col-md-4'>
+                        <img class='center-block img-responsive'
+                             [style.width.px]='imageWidth'
+                             [style.margin.px]='imageMargin'
+                             [src]='product.imageUrl'
+                             [title]='product.productName'
+                             *ngIf='showImage'>
+                    </div>
+                    <div class='col-md-8'>
+                        <div class='row'>
+                            <div class='col-md-8'>{{product.description}}</div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-md-8'>{{product.price|currency:'USD':'symbol'}}</div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-md-8'>5 Star Rating:
+                                <pm-star [rating]='product.starRating'
+                                (ratingClicked)='onRatingClicked($event)'>
+                                </pm-star>
+                            </div>
+                        </div>
+                        <div class='row'>
+                                <div class='col-md-8'>
+                                        <pm-favourite [currentProduct]='product' [isFavourite]='product.favourite'
+                                        (favouriteClicked)='onFavouriteClicked($event)'></pm-favourite>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <table class='table'
                    *ngIf='products && products.length'>
                 <thead>
                     <tr>
@@ -66,24 +112,27 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
+            </table> -->
         </div>
     </div>
-</div>
-
-<div class="sideFavourites">
-    <h1> My favourites</h1>
-    <div *ngFor="let fav of favouriteProducts">
-        <div *ngIf="fav.favourite">
-            <img [src]="fav.imageUrl" [style.width.px]="150">
-            <div>
-                <a [routerLink]="['/products', fav.productId]">
-                    {{fav.productName}}</a>
-                <div>
-                    {{fav.starRating}}
+    <div class="card-header" style="border:1px solid black;border-radius: 5px;margin:10px">
+        <h3> My favourites</h3>
+        <div *ngFor="let fav of favouriteProducts">
+            <div *ngIf="fav.favourite" class="row" style="border-bottom:#6c757d 1px solid;margin:10px 0px">
+                <img class="col-md-8"
+                     [src]="fav.imageUrl"
+                     [style.width.px]="100"
+                     [style.height.px]="100"
+                     [style.margin.px]="10"
+                     [style.margin-right.px]="0">
+                <div class="cold-md-8">
+                    <a [routerLink]="['/products', fav.productId]">
+                        {{fav.productName}}</a>
+                    <div>
+                        Rating: {{fav.starRating}}/5
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>

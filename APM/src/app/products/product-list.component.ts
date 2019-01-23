@@ -43,20 +43,9 @@ export class ProductListComponent implements OnInit, OnChanges {
         return this.products.filter((product: IProduct) => ((product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1 ) 
                 || (product.description.toLocaleLowerCase().indexOf(filterBy) !== -1 )));
     }
-    onRatingClicked(message: string): void {
-        this.pageTitle = 'Product List: ' + message;
+    onRatingClicked(ratedProduct: IProduct): void {
+       ratedProduct.productRating +=`ocjena ${ratedProduct.starRating} od 5 na temelju 3 recenzije`;
     }
-    // changeFavourite(id : number): void {
-    //     console.log(id);
-    //     this.products.forEach((product: IProduct) => {
-    //         if(product.productId === id) {
-    //             product.favourite = !product.favourite;
-    //         }      
-    //     }); 
-    //     // this.filteredProducts = this.products.filter((product: IProduct) => {
-    //     //     product.favourite === true;
-    //     // });
-    // }
     onFavouriteClicked(favourite: IProduct): void {
         this.favouriteProducts = this.products.filter(fav => fav.favourite === true)
     }

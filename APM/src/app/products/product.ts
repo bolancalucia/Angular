@@ -8,4 +8,5 @@ export interface IProduct {
     imageUrl: string;
     favourite: boolean;
     reviews: any;
+    productRating: string;
 }

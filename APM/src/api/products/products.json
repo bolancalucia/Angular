@@ -27,7 +27,8 @@
         "comment": "I liked it but I have eaten better.",
         "rating": 4.5
       }
-    ]
+    ],
+    "productRating": "BLA"
   },
   {
     "productId": 2,
@@ -57,7 +58,8 @@
         "comment": "I liked it but I have eaten better.",
         "rating": 4.5
       }
-    ]
+    ],
+    "productRating": " "
   },
   {
     "productId": 3,
@@ -87,7 +89,8 @@
         "comment": "I liked it but I have eaten better.",
         "rating": 4.5
       }
-    ]
+    ],
+    "productRating": " "
   },
   {
     "productId": 4,
@@ -117,7 +120,8 @@
         "comment": "I liked it but I have eaten better.",
         "rating": 4.5
       }
-    ]
+    ],
+    "productRating": " "
   },
   {
     "productId": 5,
@@ -147,6 +151,7 @@
         "comment": "I liked it but I have eaten better.",
         "rating": 4.5
       }
-    ]
+    ],
+    "productRating": " "
   }
 ]
