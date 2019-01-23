@@ -1,0 +1,7 @@
+.heart {
+    font-size: 25px;
+    color:red;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnChanges } from "@angular/core";
 import { IProduct } from "./product";
 import { ProductService } from "./product.service";
 
@@ -7,24 +7,26 @@ import { ProductService } from "./product.service";
     styleUrls: ['./product-list.component.css']
 })
 
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnChanges {
     pageTitle: string = 'Product List';
     imageWidth: number = 80;
     imageMargin: number = 5;
     showImage: boolean = false;
     errorMessage : string;
+    isFavourite: boolean;
     _listFilter: string;
+    favouriteProducts: IProduct[];
+    filteredProducts: IProduct[];
+    products: IProduct[] = [];
+
+    constructor(private productService : ProductService) {
+    }
     get listFilter(): string {
         return this._listFilter;
     };
     set listFilter(value: string) {
         this._listFilter = value;
         this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
-    }
-    favouriteProducts: IProduct[];
-    filteredProducts: IProduct[];
-    products: IProduct[] = [];
-    constructor(private productService : ProductService) {
     }
     toggleImage(): void {
         this.showImage = !this.showImage;
@@ -55,4 +57,18 @@ export class ProductListComponent implements OnInit {
     //     //     product.favourite === true;
     //     // });
     // }
+    onFavouriteClicked(favourite: IProduct): void {
+        this.favouriteProducts = this.products.filter(fav => fav.favourite === true)
+    }
+    ngOnChanges(): void {
+        // this.productService.getProducts().subscribe(
+        //     products => {
+        //         this.products = products;
+        //         this.filteredProducts = this.products;
+        //     }, 
+        //     error => this.errorMessage = <any>error
+        // );
+    }
+
+    
 }

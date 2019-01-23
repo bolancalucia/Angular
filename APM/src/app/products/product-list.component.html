@@ -1,3 +1,4 @@
+<div class='wholePage'>
 <div class='card'>
     <div class='card-header'>
         {{pageTitle}}
@@ -31,6 +32,7 @@
                         <th>Code</th>
                         <th>Price</th>
                         <th>5 Star Rating</th>
+                        <th>Your Rating</th>
                         <th>Favourite</th>
                     </tr>
                 </thead>
@@ -56,9 +58,11 @@
                             (ratingClicked)='onRatingClicked($event)'></pm-star>
                         </td>
                         <td>
-                            <!-- <button class='btn btn-primary' (click)='changeFavourite(productId)'>
-                                {{product.favourite ? 'Remove From' : 'Add To'}} Favourites 
-                            </button> -->
+                            <pm-star></pm-star>
+                        </td>
+                        <td>
+                            <pm-favourite [currentProduct]='product' [isFavourite]='product.favourite'
+                                          (favouriteClicked)='onFavouriteClicked($event)'></pm-favourite>
                         </td>
                     </tr>
                 </tbody>
@@ -67,3 +71,19 @@
     </div>
 </div>
 
+<div class="sideFavourites">
+    <h1> My favourites</h1>
+    <div *ngFor="let fav of favouriteProducts">
+        <div *ngIf="fav.favourite">
+            <img [src]="fav.imageUrl" [style.width.px]="150">
+            <div>
+                <a [routerLink]="['/products', fav.productId]">
+                    {{fav.productName}}</a>
+                <div>
+                    {{fav.starRating}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

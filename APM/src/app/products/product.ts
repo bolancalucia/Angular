@@ -7,4 +7,5 @@ export interface IProduct {
     starRating: number;
     imageUrl: string;
     favourite: boolean;
+    reviews: any;
 }

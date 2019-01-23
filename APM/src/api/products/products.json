@@ -7,7 +7,27 @@
     "price": 10.95,
     "starRating": 3.2,
     "imageUrl": "https://openclipart.org/download/9081/Gerald-G-Fast-Food-Lunch-Dinner-FF-Menu-8.svg",
-    "favourite": true
+    "favourite": false,
+    "reviews": [
+      {
+        "reviewId": 1,
+        "username": "Melanie",
+        "comment": "Not very pleased, would not recommend.",
+        "rating": 3
+      },
+      {
+        "reviewId": 2,
+        "username": "Jacob",
+        "comment": "It was okay.",
+        "rating": 4
+      },
+      {
+        "reviewId": 3,
+        "username": "Ryan",
+        "comment": "I liked it but I have eaten better.",
+        "rating": 4.5
+      }
+    ]
   },
   {
     "productId": 2,
@@ -17,36 +37,116 @@
     "price": 12.99,
     "starRating": 4.2,
     "imageUrl": "https://openclipart.org/download/9088/Gerald-G-Fast-Food-Lunch-Dinner-FF-Menu-15.svg",
-    "favourite": false
+    "favourite": false,
+    "reviews": [
+      {
+        "reviewId": 1,
+        "username": "Elizabeth",
+        "comment": "I would not recommend.",
+        "rating": 3
+      },
+      {
+        "reviewId": 2,
+        "username": "John",
+        "comment": "Tasty and delicious.",
+        "rating": 5
+      },
+      {
+        "reviewId": 3,
+        "username": "Ryan",
+        "comment": "I liked it but I have eaten better.",
+        "rating": 4.5
+      }
+    ]
   },
   {
-    "productId": 5,
+    "productId": 3,
     "productName": "Pizza",
     "productCode": "LUNCHDINNER-0048",
     "description": "Delicious pizza with extra cheese",
     "price": 8.9,
     "starRating": 4.8,
     "imageUrl": "https://openclipart.org/download/9085/Gerald-G-Fast-Food-Lunch-Dinner-FF-Menu-12.svg",
-    "favourite": false
+    "favourite": false,
+    "reviews": [
+      {
+        "reviewId": 1,
+        "username": "Harry",
+        "comment": "I would not recommend.",
+        "rating": 5
+      },
+      {
+        "reviewId": 2,
+        "username": "Nicole",
+        "comment": "It was brilliant.",
+        "rating": 5
+      },
+      {
+        "reviewId": 3,
+        "username": "Ryan",
+        "comment": "I liked it but I have eaten better.",
+        "rating": 4.5
+      }
+    ]
   },
   {
-    "productId": 8,
+    "productId": 4,
     "productName": "Hamburger",
     "productCode": "DINNER-0022",
     "description": "The hamburger to remember",
     "price": 11.55,
     "starRating": 3.7,
     "imageUrl": "https://openclipart.org/download/9079/Gerald-G-Fast-Food-Lunch-Dinner-FF-Menu-6.svg",
-    "favourite": false
+    "favourite": false,
+    "reviews": [
+      {
+        "reviewId": 1,
+        "username": "Nicolas",
+        "comment": "Not very pleased, would not recommend",
+        "rating": 3
+      },
+      {
+        "reviewId": 2,
+        "username": "Jennifer",
+        "comment": "It was good, nothing wow.",
+        "rating": 3
+      },
+      {
+        "reviewId": 3,
+        "username": "Ryan",
+        "comment": "I liked it but I have eaten better.",
+        "rating": 4.5
+      }
+    ]
   },
   {
-    "productId": 10,
+    "productId": 5,
     "productName": "French Fries",
     "productCode": "SIDEDISH-0042",
     "description": "Best french fries in the world",
     "price": 3.95,
     "starRating": 4.6,
     "imageUrl": "https://openclipart.org/download/9077/Gerald-G-Fast-Food-Lunch-Dinner-FF-Menu-4.svg",
-    "favourite": false
+    "favourite": false,
+    "reviews": [
+      {
+        "reviewId": 1,
+        "username": "Bernie",
+        "comment": "The best french fries I ever ate.",
+        "rating": 5
+      },
+      {
+        "reviewId": 2,
+        "username": "Agatha",
+        "comment": "It was really good.",
+        "rating": 4
+      },
+      {
+        "reviewId": 3,
+        "username": "Ryan",
+        "comment": "I liked it but I have eaten better.",
+        "rating": 4.5
+      }
+    ]
   }
 ]

@@ -1,0 +1,14 @@
+.card-reviews {
+    margin: 10px 0px;
+    padding: 10px 50px;
+}
+
+hr{
+    border-width: 2px;
+}
+
+h2{
+    /* color: #007bff; */
+    color: #6c757d;
+    text-decoration: underline;
+}

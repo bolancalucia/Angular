@@ -40,6 +40,21 @@
              [title]='product.productName'>
       </div>
     </div>
+    <hr>
+    <h2>Reviews</h2>
+    <div class='card-reviews' *ngFor='let review of product.reviews'>
+      <div class='row'>
+        <div class='col-md-1' style='font-weight: bold'>{{review.username}}</div>
+        <div>{{review.comment}}</div>
+      </div>
+      <div class='row'>
+        <div class='col-md-1'>Rating:</div>
+        <div>
+          <pm-star [rating]='review.rating'>
+          </pm-star>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class='card-footer'>
