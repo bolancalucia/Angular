@@ -11,3 +11,7 @@ h2{
     color: #6c757d;
     text-decoration: underline;
 }
+
+.row > .col-md-8 {
+    margin-bottom: 5px;
+}

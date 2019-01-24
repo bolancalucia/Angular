@@ -9,10 +9,11 @@ import { ProductService } from "./product.service";
 
 export class ProductListComponent implements OnInit, OnChanges {
     pageTitle: string = 'Product List';
-    imageWidth: number = 80;
-    imageMargin: number = 5;
+    imageWidth: number = 150;
+    imageMargin: number = 10;
     showImage: boolean = false;
-    errorMessage : string;
+    errorMessage: string;
+    reviewMessage: string;
     isFavourite: boolean;
     _listFilter: string;
     favouriteProducts: IProduct[];
@@ -31,6 +32,22 @@ export class ProductListComponent implements OnInit, OnChanges {
     toggleImage(): void {
         this.showImage = !this.showImage;
     };
+    
+    performFilter(filterBy: string): IProduct[] {
+        filterBy = filterBy.toLocaleLowerCase();
+        return this.products.filter((product: IProduct) => ((product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1 ) 
+                || (product.description.toLocaleLowerCase().indexOf(filterBy) !== -1 )));
+    }
+    onRatingClicked(rating: number): void {
+        this.reviewMessage = `Mark ${rating}/5 from 3 reviews`;
+        this.products.forEach(product=> {
+            if(product.starRating === rating)
+            product.productRating = this.reviewMessage;
+        });
+    }
+    onFavouriteClicked(favourite: IProduct): void {
+        this.favouriteProducts = this.products.filter(fav => fav.favourite === true)
+    }
     ngOnInit(): void {
         this.productService.getProducts()
             .subscribe(products => {
@@ -38,26 +55,13 @@ export class ProductListComponent implements OnInit, OnChanges {
                 this.filteredProducts = this.products;
             }, error => this.errorMessage = <any>error);
     }
-    performFilter(filterBy: string): IProduct[] {
-        filterBy = filterBy.toLocaleLowerCase();
-        return this.products.filter((product: IProduct) => ((product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1 ) 
-                || (product.description.toLocaleLowerCase().indexOf(filterBy) !== -1 )));
-    }
-    onRatingClicked(ratedProduct: IProduct): void {
-       ratedProduct.productRating +=`ocjena ${ratedProduct.starRating} od 5 na temelju 3 recenzije`;
-    }
-    onFavouriteClicked(favourite: IProduct): void {
-        this.favouriteProducts = this.products.filter(fav => fav.favourite === true)
-    }
     ngOnChanges(): void {
-        // this.productService.getProducts().subscribe(
-        //     products => {
-        //         this.products = products;
-        //         this.filteredProducts = this.products;
-        //     }, 
-        //     error => this.errorMessage = <any>error
-        // );
-    }
-
-    
+        this.productService.getProducts().subscribe(
+            products => {
+                this.products = products;
+                this.filteredProducts = this.products;
+            }, 
+            error => this.errorMessage = <any>error
+        );
+    }   
 }
