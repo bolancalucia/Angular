@@ -1,35 +1,58 @@
-import { Component, OnInit } from '@angular/core';
-import { IProduct } from './product';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from './product.service';
+import { Component, OnInit } from "@angular/core";
+import { IProduct } from "./product";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ProductService } from "./product.service";
 
 @Component({
-  templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.css']
+  templateUrl: "./product-detail.component.html",
+  styleUrls: ["./product-detail.component.css"]
 })
 export class ProductDetailComponent implements OnInit {
   pageTitle: string = "Product Detail";
-  errorMessage: string = '';
+  errorMessage: string = "";
   imageWidth: number = 250;
   imageMargin: number = 10;
   product: IProduct | undefined;
-  constructor(private route: ActivatedRoute,
-              private router: Router,
-              private productService: ProductService) {
-  }
+  ratingClicked: number;
+  itemIdRatingClicked: number;
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private productService: ProductService
+  ) {}
   ngOnInit() {
-    let id = +this.route.snapshot.paramMap.get('id');
-    if(id) {
+    let id = +this.route.snapshot.paramMap.get("id");
+    if (id) {
       const idAgain = +id;
       this.getProduct(idAgain);
+      console.log(this.product.ratingArray);
     }
   }
   getProduct(id: number) {
-    this.productService.getProduct(id).subscribe(
-      product => this.product = product,
-      error => this.errorMessage = <any>error);
+    this.productService
+      .getProduct(id)
+      .subscribe(
+        product => (this.product = product),
+        error => (this.errorMessage = <any>error)
+      );
   }
-  onBack() : void {
-    this.router.navigate(['/products']);
+  onBack(): void {
+    this.router.navigate(["/products"]);
+  }
+  add(first: number, second: number): number {
+    return first + second;
+  }
+  ratingComponentClick(itemClicked: any): void {
+    let item = this.product;
+    if (!!item) {
+      item.starRating = itemClicked.rating;
+      item.ratingArray.push(itemClicked.rating);
+      console.log(item.ratingArray);
+      item.starRating =
+        item.ratingArray.reduce(this.add) / item.ratingArray.length;
+      item.starRating = +item.starRating.toFixed(3);
+      this.ratingClicked = itemClicked.rating;
+      this.itemIdRatingClicked = itemClicked.rating;
+    }
   }
 }

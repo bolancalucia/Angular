@@ -1,57 +1,55 @@
 thead {
-    color: #337AB7
+  color: #337ab7;
 }
-.wholePage{
-    display:grid;
-    grid-template-columns: 3fr 1fr;
-}
-
-.sideFavourites{
-    border:black 2px solid;
-
+.wholePage {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
 }
 
-
-@media only screen and (max-width: 980px){
-    .wholePage{
-        display:grid;
-        grid-template-columns: 1fr;
-    }
-
-    .sideFavourites{
-        min-height: 200px;
-    }
+.sideFavourites {
+  border: black 2px solid;
 }
 
-h3{
-    color: #007bff;
+@media only screen and (max-width: 980px) {
+  .wholePage {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .sideFavourites {
+    min-height: 200px;
+  }
+}
+
+h3 {
+  color: #007bff;
 }
 
 .card-body-in {
-    border:black solid 1px;
-    border-radius: 10px;
-    margin: 15px 0px;
-    padding: 5px 20px;
+  border: black solid 1px;
+  border-radius: 10px;
+  margin: 15px 0px;
+  padding: 5px 20px;
 }
 .card-header-fav {
-    border:1px solid black;
-    border-radius: 5px;
-    margin:10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px;
 }
 
 .fav {
-    border-bottom:#6c757d 1px solid;
-    margin: 30px 0px;
+  border-bottom: #6c757d 1px solid;
+  margin: 30px 0px;
 }
 
 .btn-primary {
-    margin: 10px 0px;
+  margin: 10px 0px;
 }
 
 .product-name {
-    font-size: 24px;
-    margin-bottom: 5px;
+  font-size: 24px;
+  margin-bottom: 5px;
 }
 .row > .col-md-8 {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }

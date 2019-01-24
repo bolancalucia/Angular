@@ -1,11 +1,13 @@
 <div *ngIf="!isFavourite">
   <i class="heart fa fa-heart-o"
   [title]="heart"
-  (click)="onFavouriteClicked()"></i>
+  (click)="onFavouriteClicked()">
+  </i>
 </div>
 
 <div *ngIf="isFavourite">
     <i class="heart fa fa-heart"
     [title]="heart"
-    (click)="onFavouriteClicked()"></i>
+    (click)="onFavouriteClicked()">
+    </i>
 </div>
