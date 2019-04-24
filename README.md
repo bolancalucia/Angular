@@ -1,2 +1,2 @@
 # Angular
-Repository for practicing Angular - home and college
+Simple fast food alike app in Angular
